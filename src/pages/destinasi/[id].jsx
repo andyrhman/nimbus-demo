@@ -108,9 +108,11 @@ const DestinasiWisata = () => {
                     nama={destinasiWisata.nama}
                     alamat={destinasiWisata.alamat}
                     categoryWisata={categoryWisata.nama}
+                    google_link={destinasiWisata.google_link}
                     provinsi={provinsi.nama}
                     review_total={destinasiWisata.review_total}
                     thumbnail={destinasiWisata.thumbnail}
+                    website={destinasiWisata.website}
                 />
                 <DestinasiTerdekat
                     nama_destinasi={destinasiWisata.nama}
