@@ -111,6 +111,7 @@ const DestinasiWisata = () => {
                     google_link={destinasiWisata.google_link}
                     provinsi={provinsi.nama}
                     review_total={destinasiWisata.review_total}
+                    average_rating={destinasiWisata.average_rating}
                     thumbnail={destinasiWisata.thumbnail}
                     website={destinasiWisata.website}
                 />
