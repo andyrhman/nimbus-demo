@@ -21,7 +21,7 @@ const AuthRegister = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const router = useRouter(); // Initialize the router instance
+    const router = useRouter();
 
     const [strength, setStrength] = useState(0);
 
@@ -43,7 +43,6 @@ const AuthRegister = () => {
             password_confirm: confirmPassword
         };
 
-        // Validate confirm password
         if (confirmPassword !== password) {
             setConfirmPasswordError('Passwords do not match');
             return;
@@ -69,7 +68,6 @@ const AuthRegister = () => {
                 const errorMessage = error.response.data.message;
                 setError(errorMessage);
 
-                // Set error flags based on the error message
                 if (errorMessage.includes('fullName')) {
                     setFullNameError(errorMessage);
                 }
@@ -90,11 +88,11 @@ const AuthRegister = () => {
 
     function checkPasswordStrength(password) {
         let strength = 0;
-        if (password.match(/[a-z]/)) strength++; // lower case letter
-        if (password.match(/[A-Z]/)) strength++; // upper case letter
-        if (password.match(/[0-9]/)) strength++; // number
-        if (password.match(/[^a-zA-Z0-9]/)) strength++; // special character
-        if (password.length >= 6) strength++; // length 8 or more
+        if (password.match(/[a-z]/)) strength++;
+        if (password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^a-zA-Z0-9]/)) strength++;
+        if (password.length >= 6) strength++;
         return strength;
     }
 

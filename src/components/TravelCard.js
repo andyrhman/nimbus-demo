@@ -46,7 +46,6 @@ const TravelCard = () => {
     const score = 1843;
     return (
         <section className="py-20">
-            {/* <h1 className="mb-12 text-center font-sans text-5xl font-bold text-gray-900">Navigating Into Magical Breathtaking Unique Spots. Lebih dari 1.843 destinasi wisata.<span className="text-blue-600">.</span></h1> */}
             <h1 className="leading-relaxed font-primary font-extrabold text-4xl text-center text-palette-primary mb-4 sm:py-4">
                 Navigating Into Magical Breathtaking Unique Spots
             </h1>
@@ -81,7 +80,6 @@ const TravelCard = () => {
                 <div>{error}</div>
             ) : tempatWisata.length > 0 ? (
                 <div className="mx-auto max-w-screen-xl p-6">
-                    {/* Travel Cards Grid */}
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
                         {tempatWisata.map((tw, index) => (

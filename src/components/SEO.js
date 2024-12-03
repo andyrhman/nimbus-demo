@@ -14,7 +14,6 @@ const SEO = ({ title }) => {
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
 
-            {/* Open Graph */}
             <meta property="og:url" content={siteURL} key="ogurl" />
             <meta property="og:image" content={imagePreview} key="ogimage" />
             <meta property="og:site_name" content={siteURL} key="ogsitename" />
