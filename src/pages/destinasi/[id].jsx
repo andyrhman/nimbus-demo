@@ -39,6 +39,64 @@ const DestinasiWisata = () => {
         }
     }, [id]);
 
+    const [tempatWisataTerdekat, setTempatWisataTerdekat] = useState([]);
+
+    useEffect(() => {
+        const fetchTempatWisata = async () => {
+            if (!destinasiWisata?.nama) {
+                console.error("destinasiWisata.nama is not available.");
+                return;
+            }
+
+            setLoading(true);
+            setError(null);
+
+            try {
+                const { data } = await axios.post('user/recommend-destinations', {
+                    selected_place: destinasiWisata.nama
+                });
+                setTempatWisataTerdekat(data);
+            } catch (err) {
+                console.log(err.message);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (destinasiWisata?.nama) {
+            fetchTempatWisata();
+        }
+    }, [destinasiWisata]);
+
+    const [topFiveDestinations, setTopFiveDestinations] = useState([]);
+
+    useEffect(() => {
+        const fetchTopFiveDestinations = async () => {
+            if (!destinasiWisata?.nama) {
+                console.error("destinasiWisata.nama is not available.");
+                return;
+            }
+
+            setLoading(true);
+            setError(null);
+
+            try {
+                const response = await axios.post('user/top-five-similar', {
+                    selected_place: destinasiWisata.nama
+                });
+                setTopFiveDestinations(response.data.top_five_similar_destinations || []);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (destinasiWisata?.nama) {
+            fetchTopFiveDestinations();
+        }
+    }, [destinasiWisata]);
     return (
         <Layout>
             <UserWrapper>
