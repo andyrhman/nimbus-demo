@@ -1,8 +1,17 @@
-import React from 'react';
-import StarRatings from 'react-star-ratings';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 
+const StarRatings = dynamic(() => import('react-star-ratings'), { ssr: false });
 
 const ProductReviewStar = ({ average_rating, review_total }) => {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return null;
+
     const rating = average_rating ? Number(average_rating) : 0;
     const reviewTotal = review_total || 0;
 
