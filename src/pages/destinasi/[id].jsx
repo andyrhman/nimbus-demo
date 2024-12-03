@@ -61,7 +61,7 @@ const DestinasiWisata = () => {
 
             try {
                 const { data } = await axios.post('user/recommend-destinations', {
-                    selected_place: destinasiWisata.nama
+                    selected_place: destinasiWisata?.nama
                 });
                 setTempatWisataTerdekat(data);
             } catch (err) {
@@ -107,28 +107,28 @@ const DestinasiWisata = () => {
                 <SEO title={pageTitle} />
                 <section className="py-2 sm:py-2">
                     <div className="container mx-auto px-4">
-                        <Breadcrumbs title={loading ? 'Loading...' : destinasiWisata.nama || 'Unnamed Destinasi'} />
+                        <Breadcrumbs title={loading ? 'Loading...' : destinasiWisata?.nama || 'Unnamed Destinasi'} />
                     </div>
                 </section>
                 <DestinasiDetail
                     destinasiWisata={destinasiWisata}
-                    nama={destinasiWisata.nama || 'No Name'}
-                    alamat={destinasiWisata.alamat || 'No Address'}
-                    categoryWisata={categoryWisata.nama || 'No Category'}
-                    google_link={destinasiWisata.google_link || '#'}
-                    provinsi={provinsi.nama || 'No Province'}
-                    review_total={destinasiWisata.review_total || 0}
-                    thumbnail={destinasiWisata.thumbnail || '#'}
-                    website={destinasiWisata.website || '#'}
+                    nama={destinasiWisata?.nama || 'No Name'}
+                    alamat={destinasiWisata?.alamat || 'No Address'}
+                    categoryWisata={categoryWisata?.nama || 'No Category'}
+                    google_link={destinasiWisata?.google_link || '#'}
+                    provinsi={provinsi?.nama || 'No Province'}
+                    review_total={destinasiWisata?.review_total || 0}
+                    thumbnail={destinasiWisata?.thumbnail || '#'}
+                    website={destinasiWisata?.website || '#'}
                 />
                 <DestinasiTerdekat
-                    nama_destinasi={destinasiWisata.nama}
+                    nama_destinasi={destinasiWisata?.nama}
                     loading={loading}
                     error={error}
                     tempatWisataTerdekat={tempatWisataTerdekat}
                 />
                 <Top5Destinasi
-                    nama_destinasi={destinasiWisata.nama}
+                    nama_destinasi={destinasiWisata?.nama}
                     loading={loading}
                     error={error}
                     top5DestinasiSerupa={topFiveDestinations}
