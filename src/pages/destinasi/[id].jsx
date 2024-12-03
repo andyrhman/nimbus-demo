@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-
+import axios from 'axios';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import UserWrapper from '@/components/UserWrapper.js';
