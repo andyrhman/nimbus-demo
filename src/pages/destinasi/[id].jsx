@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
+import DestinasiTerdekat from '@/components/DestinasiTerdekat.js';
+import Top5Destinasi from '@/components/Top5Destinasi.js';
 import UserWrapper from '@/components/UserWrapper.js';
 
 const DestinasiWisata = () => {
@@ -101,7 +103,18 @@ const DestinasiWisata = () => {
         <Layout>
             <UserWrapper>
                 <SEO title={pageTitle} />
-                <h1>Test21q3</h1>
+                <DestinasiTerdekat
+                    nama_destinasi={destinasiWisata.nama}
+                    loading={loading}
+                    error={error}
+                    tempatWisataTerdekat={tempatWisataTerdekat}
+                />
+                <Top5Destinasi
+                    nama_destinasi={destinasiWisata.nama}
+                    loading={loading}
+                    error={error}
+                    top5DestinasiSerupa={topFiveDestinations}
+                />
             </UserWrapper>
         </Layout>
     )
