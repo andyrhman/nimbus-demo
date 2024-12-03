@@ -1,7 +1,4 @@
-import ProductReviewStar from './ProductReviewStar.js';
-
 const DestinasiDetail = ({
-    destinasiWisata,
     nama,
     alamat,
     categoryWisata,
@@ -32,8 +29,6 @@ const DestinasiDetail = ({
 
                 <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                     <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{nama}</h1>
-                    <ProductReviewStar averageRating={destinasiWisata} />
-
                     <h2 className="mt-8 text-base text-gray-900">Provinsi</h2>
                     <div className="mt-3 flex select-none flex-wrap items-center gap-1">
                         <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">

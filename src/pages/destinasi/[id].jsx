@@ -105,7 +105,6 @@ const DestinasiWisata = () => {
             <UserWrapper>
                 <SEO title={pageTitle} />
                 <DestinasiDetail
-                    destinasiWisata={destinasiWisata}
                     nama={destinasiWisata.nama}
                     alamat={destinasiWisata.alamat}
                     categoryWisata={categoryWisata.nama}
