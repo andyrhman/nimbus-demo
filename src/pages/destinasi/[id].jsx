@@ -8,11 +8,10 @@ import DestinasiTerdekat from '@/components/DestinasiTerdekat.js';
 import Top5Destinasi from '@/components/Top5Destinasi.js';
 import UserWrapper from '@/components/UserWrapper.js';
 import Breadcrumbs from '@/components/Breadcrumb.js';
-import 'react-toastify/dist/ReactToastify.css';
 
 const DestinasiWisata = () => {
     const pageTitle = `Destinasi Wisata | ${process.env.siteTitle}`
-    const [destinasiWisata, setDestinasiWista] = useState('');
+    const [destinasiWisata, setDestinasiWista] = useState({});
     const [categoryWisata, setCategoryWisata] = useState('');
     const [provinsi, setProvinsi] = useState('');
 
@@ -26,6 +25,7 @@ const DestinasiWisata = () => {
         if (id) {
             (
                 async () => {
+                    setLoading(true);
                     try {
                         const { data } = await axios.get(`user/tempat-wisata/${id}`);
                         setDestinasiWista(data);
@@ -39,6 +39,7 @@ const DestinasiWisata = () => {
                         if (error.response && error.response.status === 403) {
                             console.log(error);
                         }
+                    } finally {
                         setLoading(false);
                     }
                 }
@@ -106,20 +107,19 @@ const DestinasiWisata = () => {
                 <SEO title={pageTitle} />
                 <section className="py-2 sm:py-2">
                     <div className="container mx-auto px-4">
-                        <Breadcrumbs title={loading ? 'Loading...' : destinasiWisata.nama} />
+                        <Breadcrumbs title={loading ? 'Loading...' : destinasiWisata.nama || 'Unnamed Destinasi'} />
                     </div>
                 </section>
                 <DestinasiDetail
                     destinasiWisata={destinasiWisata}
-                    nama={destinasiWisata.nama}
-                    alamat={destinasiWisata.alamat}
-                    categoryWisata={categoryWisata.nama}
-                    google_link={destinasiWisata.google_link}
-                    provinsi={provinsi.nama}
-                    review_total={destinasiWisata.review_total}
-                    thumbnail={destinasiWisata.thumbnail}
-                    website={destinasiWisata.website}
-
+                    nama={destinasiWisata.nama || 'No Name'}
+                    alamat={destinasiWisata.alamat || 'No Address'}
+                    categoryWisata={categoryWisata.nama || 'No Category'}
+                    google_link={destinasiWisata.google_link || '#'}
+                    provinsi={provinsi.nama || 'No Province'}
+                    review_total={destinasiWisata.review_total || 0}
+                    thumbnail={destinasiWisata.thumbnail || '#'}
+                    website={destinasiWisata.website || '#'}
                 />
                 <DestinasiTerdekat
                     nama_destinasi={destinasiWisata.nama}

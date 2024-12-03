@@ -4,7 +4,7 @@ import Image from "next/image.js";
 const DestinasiTerdekat = ({ loading, error, tempatWisataTerdekat, nama_destinasi }) => {
     return (
         <section className="py-6">
-            <h1 className="mb-4 text-center font-sans text-2xl font-bold text-gray-900">Rekomendasi destinasi dekat <span className="text-blue-600">{nama_destinasi}</span></h1>
+            <h1 className="mb-4 text-center font-sans text-2xl font-bold text-gray-900">Rekomendasi destinasi dekat <span className="text-blue-600">{nama_destinasi}</span> (MODEL 3)</h1>
 
             {loading ? (
                 <div className="flex items-center justify-center h-[50vh]">

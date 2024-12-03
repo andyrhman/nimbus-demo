@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link.js";
 import Image from "next/image.js";
+import CountUp from 'react-countup';
 
 const TravelCard = () => {
     const [tempatWisata, setTempatWisata] = useState([]);
@@ -42,10 +43,16 @@ const TravelCard = () => {
         setPage(newPage);
     };
 
-
+    const score = 1843;
     return (
         <section className="py-20">
-            <h1 className="mb-12 text-center font-sans text-5xl font-bold text-gray-900">Nimbus Demo. Lebih dari 1.843 destinasi wisata.<span className="text-blue-600">.</span></h1>
+            {/* <h1 className="mb-12 text-center font-sans text-5xl font-bold text-gray-900">Navigating Into Magical Breathtaking Unique Spots. Lebih dari 1.843 destinasi wisata.<span className="text-blue-600">.</span></h1> */}
+            <h1 className="leading-relaxed font-primary font-extrabold text-4xl text-center text-palette-primary mb-4 sm:py-4">
+                Navigating Into Magical Breathtaking Unique Spots
+            </h1>
+            <h1 className="leading-relaxed font-primary text-1xl text-center text-palette-primary sm:py-2">
+                Lebih dari <CountUp start={0} end={score} duration={5} /> destinasi wisata.
+            </h1>
             <div className="mx-auto max-w-screen-xl px-6">
                 <label className="input input-bordered flex items-center gap-2">
                     <input
