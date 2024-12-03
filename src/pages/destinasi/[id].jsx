@@ -7,7 +7,6 @@ import DestinasiDetail from '@/components/DestinasiDetail.js';
 import DestinasiTerdekat from '@/components/DestinasiTerdekat.js';
 import Top5Destinasi from '@/components/Top5Destinasi.js';
 import UserWrapper from '@/components/UserWrapper.js';
-import Breadcrumbs from '@/components/Breadcrumb.js';
 
 const DestinasiWisata = () => {
     const pageTitle = `Destinasi Wisata | ${process.env.siteTitle}`
@@ -116,11 +115,7 @@ const DestinasiWisata = () => {
         <Layout>
             <UserWrapper>
                 <SEO title={pageTitle} />
-                <section className="py-2 sm:py-2">
-                    <div className="container mx-auto px-4">
-                        <Breadcrumbs title={loading ? 'Loading...' : destinasiWisata.nama} />
-                    </div>
-                </section>
+
                 <DestinasiDetail
                     destinasiWisata={destinasiWisata}
                     nama={destinasiWisata.nama}
