@@ -4,8 +4,6 @@ import axios from 'axios';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import DestinasiDetail from '@/components/DestinasiDetail.js';
-import DestinasiTerdekat from '@/components/DestinasiTerdekat.js';
-import Top5Destinasi from '@/components/Top5Destinasi.js';
 import UserWrapper from '@/components/UserWrapper.js';
 import Breadcrumbs from '@/components/Breadcrumb.js';
 
@@ -53,65 +51,7 @@ const DestinasiWisata = () => {
         }
     }, [id]);
 
-    const [tempatWisataTerdekat, setTempatWisataTerdekat] = useState([]);
 
-    useEffect(() => {
-        const fetchTempatWisata = async () => {
-            if (!destinasiWisata?.nama) {
-                console.error("destinasiWisata.nama is not available.");
-                return;
-            }
-    
-            setLoading(true);
-            setError(null);
-    
-            try {
-                const { data } = await axios.post('user/recommend-destinations', {
-                    selected_place: destinasiWisata.nama
-                });
-                setTempatWisataTerdekat(data);
-            } catch (err) {
-                console.log(err.message);
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-    
-        if (destinasiWisata?.nama) {
-            fetchTempatWisata();
-        }
-    }, [destinasiWisata]);
-
-    const [topFiveDestinations, setTopFiveDestinations] = useState([]);
-
-    useEffect(() => {
-        const fetchTopFiveDestinations = async () => {
-            if (!destinasiWisata?.nama) {
-                console.error("destinasiWisata.nama is not available.");
-                return;
-            }
-    
-            setLoading(true);
-            setError(null);
-    
-            try {
-                const response = await axios.post('user/top-five-similar', {
-                    selected_place: destinasiWisata.nama
-                });
-                setTopFiveDestinations(response.data.top_five_similar_destinations || []);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-    
-        if (destinasiWisata?.nama) {
-            fetchTopFiveDestinations();
-        }
-    }, [destinasiWisata]);
-    
     return (
         <Layout>
             <UserWrapper>
@@ -132,18 +72,7 @@ const DestinasiWisata = () => {
                     thumbnail={destinasiWisata?.thumbnail || '#'}
                     website={destinasiWisata?.website || '#'}
                 />
-                <DestinasiTerdekat
-                    nama_destinasi={destinasiWisata?.nama}
-                    loading={loading}
-                    error={error}
-                    tempatWisataTerdekat={tempatWisataTerdekat}
-                />
-                <Top5Destinasi
-                    nama_destinasi={destinasiWisata?.nama}
-                    loading={loading}
-                    error={error}
-                    top5DestinasiSerupa={topFiveDestinations}
-                />
+
             </UserWrapper>
         </Layout>
     )
