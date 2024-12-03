@@ -1,10 +1,6 @@
-import React from 'react';
 import Link from 'next/link.js';
 import SmallError from './SmallError.js';
 import ProductReviewStar from './ProductReviewStar.js';
-// import BackToProductButton from '../Buttons/BackToProductButton';
-// import Review from './Review';
-// import ReviewForm from '../Forms/ReviewForm';
 
 const DestinasiDetail = ({
     destinasiWisata,
@@ -43,7 +39,6 @@ const DestinasiDetail = ({
                 </div>
 
                 <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                    {/* <BackToProductButton /> */}
                     <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{nama}</h1>
                     <ProductReviewStar averageRating={destinasiWisata} />
 
