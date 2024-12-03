@@ -1,7 +1,6 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
+import StarRatings from 'react-star-ratings';
 
-const StarRatings = dynamic(() => import('react-star-ratings'), { ssr: false });
 
 const ProductReviewStar = ({ average_rating, review_total }) => {
     const rating = average_rating ? Number(average_rating) : 0;
