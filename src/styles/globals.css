@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.star-container {
+    display: flex;
+    align-items: center;
+}
+
+.star-container svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+    color: gray; /* Default empty star color */
+}
+
+.star-container svg[fill="gold"] {
+    color: gold; /* Filled star color */
+}
