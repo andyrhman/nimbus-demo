@@ -4,8 +4,8 @@ import dynamic from 'next/dynamic';
 const StarRatings = dynamic(() => import('react-star-ratings'), { ssr: false });
 
 const ProductReviewStar = ({ average_rating, review_total }) => {
-    const rating = Number(average_rating);
-    const reviewTotal = review_total;
+    const rating = average_rating ? Number(average_rating) : 0;
+    const reviewTotal = review_total || 0;
 
     return (
         <div className="mt-5 flex items-center">
