@@ -28,10 +28,16 @@ const DestinasiWisata = () => {
                     setLoading(true);
                     try {
                         const { data } = await axios.get(`user/tempat-wisata/${id}`);
-                        setDestinasiWista(data);
-                        setCategoryWisata(data.categoryWisata);
-                        setProvinsi(data.provinsi);
-                        setLoading(false);
+                        if (data) {
+                            setDestinasiWista(data);
+                            setCategoryWisata(data.categoryWisata || {});
+                            setProvinsi(data.provinsi || {});
+                            setLoading(false);
+
+                        } else {
+                            setError('No data found');
+                        }
+
                     } catch (error) {
                         if (error.response && error.response.status === 401) {
                             console.log(error);
@@ -51,17 +57,17 @@ const DestinasiWisata = () => {
 
     useEffect(() => {
         const fetchTempatWisata = async () => {
-            if (!destinasiWisata || !destinasiWisata.nama) {
+            if (!destinasiWisata?.nama) {
                 console.error("destinasiWisata.nama is not available.");
                 return;
             }
-
+    
             setLoading(true);
             setError(null);
-
+    
             try {
                 const { data } = await axios.post('user/recommend-destinations', {
-                    selected_place: destinasiWisata?.nama
+                    selected_place: destinasiWisata.nama
                 });
                 setTempatWisataTerdekat(data);
             } catch (err) {
@@ -71,36 +77,41 @@ const DestinasiWisata = () => {
                 setLoading(false);
             }
         };
-
-        fetchTempatWisata();
+    
+        if (destinasiWisata?.nama) {
+            fetchTempatWisata();
+        }
     }, [destinasiWisata]);
 
     const [topFiveDestinations, setTopFiveDestinations] = useState([]);
 
     useEffect(() => {
         const fetchTopFiveDestinations = async () => {
-            if (!destinasiWisata || !destinasiWisata.nama) {
+            if (!destinasiWisata?.nama) {
                 console.error("destinasiWisata.nama is not available.");
                 return;
             }
-
+    
             setLoading(true);
             setError(null);
-
+    
             try {
                 const response = await axios.post('user/top-five-similar', {
                     selected_place: destinasiWisata.nama
                 });
-                setTopFiveDestinations(response.data.top_five_similar_destinations);
+                setTopFiveDestinations(response.data.top_five_similar_destinations || []);
             } catch (err) {
                 setError(err.message);
             } finally {
                 setLoading(false);
             }
         };
-
-        fetchTopFiveDestinations();
+    
+        if (destinasiWisata?.nama) {
+            fetchTopFiveDestinations();
+        }
     }, [destinasiWisata]);
+    
     return (
         <Layout>
             <UserWrapper>
