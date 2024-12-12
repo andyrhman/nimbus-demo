@@ -25,7 +25,6 @@ const HomePage = () => {
   return (
     <Layout>
       <SEO title={pageTitle} />
-      <Navbar />
       <button onClick={logout} className="btn btn-ghost normal-case text-md">Logout</button>
       <UserWrapper>
         <TravelCard />
