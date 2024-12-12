@@ -79,9 +79,6 @@ const Navbar = ({ user }) => {
                             <div className="dropdown dropdown-end hidden lg:flex">
                                 <Link href={'/register'} className="btn btn-ghost normal-case text-md">Register</Link>
                             </div>
-                            <div className="dropdown dropdown-end hidden lg:flex">
-                                <button onClick={logout} className="btn btn-ghost normal-case text-md">Logout</button>
-                            </div>
                         </>
                     )}
                 </div>
