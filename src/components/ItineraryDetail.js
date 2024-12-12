@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from "next/link.js";
 import Image from "next/image.js";
-import formatDate from '@/services/formatDate.js';
 
 const ItineraryDetail = ({
     destinasiWisata
@@ -36,9 +35,6 @@ const ItineraryDetail = ({
                                                 <span className="text-md font-bold text-blue-500">{d.tempatWisata.categoryWisata?.nama}</span>
                                             </p>
 
-                                            <div className="group inline-flex rounded-xl bg-blue-100 p-2 hover:bg-blue-200">
-                                                <span className="text-xs font-bold text-blue-500">{formatDate(d.tanggal_perencanaan)}</span>
-                                            </div>
                                         </div>
                                     </div>
                                 </Link>

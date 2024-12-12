@@ -130,7 +130,6 @@ const ItineraryAI = () => {
                                                                 {i.nama}
                                                             </h2>
                                                             <div className="badge badge-secondary">{formatCreationDate(i.created_at)}</div>
-                                                            <p>Budget Rp{new Intl.NumberFormat('id-ID').format(i.budget)}</p>
                                                             <div className="card-actions justify-end">
                                                                 <div className="badge badge-outline">{i.provinsi.nama}</div>
                                                                 <div className="badge badge-outline">{i.categoryWisata.nama}</div>

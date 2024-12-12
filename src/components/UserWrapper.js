@@ -5,11 +5,11 @@ import { setUser } from "@/redux/actions/setUserAction.js";
 import axios from "axios";
 import Loader from "./Loader.js";
 import Navbar from "./Navbar.js";
+import Layout from "./Layout.js";
 
 const UserWrapper = (props) => {
     const [loading, setLoading] = useState(true);
     const { setUser } = props;
-    const router = useRouter();
 
     useEffect(() => {
         (async () => {
@@ -32,16 +32,16 @@ const UserWrapper = (props) => {
                 setLoading(false);
             }
         })();
-    }, [setUser, router]);
+    }, [setUser]);
 
     if (loading) {
         return <Loader />;
     }
     return (
-        <div>
+        <Layout>
             <Navbar />
             {props.children}
-        </div>
+        </Layout>
     );
 }
 

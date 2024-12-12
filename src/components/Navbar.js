@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/solid';
 import { connect } from "react-redux";
 import { useRouter } from 'next/router';
 
@@ -10,7 +9,7 @@ const Navbar = ({ user }) => {
 
     const logout = async () => {
         await axios.post('user/logout', {});
-        router.push('/');
+        window.location.reload();
     }
     return (
         <>
@@ -66,7 +65,9 @@ const Navbar = ({ user }) => {
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><button onClick={logout}>Logout</button></li>
+                                    <li>
+                                        <div onClick={logout}>Logout</div>
+                                    </li>
                                 </ul>
                             </div>
                         </>
@@ -77,6 +78,9 @@ const Navbar = ({ user }) => {
                             </div>
                             <div className="dropdown dropdown-end hidden lg:flex">
                                 <Link href={'/register'} className="btn btn-ghost normal-case text-md">Register</Link>
+                            </div>
+                            <div className="dropdown dropdown-end hidden lg:flex">
+                                <button onClick={logout} className="btn btn-ghost normal-case text-md">Logout</button>
                             </div>
                         </>
                     )}

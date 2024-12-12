@@ -3,7 +3,6 @@ import axios from 'axios';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import UserWrapper from '@/components/UserWrapper.js';
-import DatePicker from "react-datepicker";
 import { useRouter } from 'next/router';
 import { toast, Slide } from 'react-toastify';
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,10 +13,8 @@ const CreateItineraryAI = () => {
     const [provinsi, setProvinsi] = useState([]);
     const [categoryWisata, setCategoryWisata] = useState([]);
     const [nama, setNama] = useState('');
-    const [budget, setBudget] = useState('');
     const [provinsi_id, setProvinsiId] = useState('');
     const [categoryWisata_id, setCategoryWisataId] = useState('');
-    const [tanggal_perencanaan, setTanggalPerencanaan] = useState(new Date());
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const router = useRouter();
@@ -48,10 +45,8 @@ const CreateItineraryAI = () => {
         try {
             const { data } = await axios.post('user/rencana-otomatis', {
                 nama,
-                budget: String(budget),
                 provinsi_id: Number(provinsi_id),
-                categoryWisata_id: Number(categoryWisata_id),
-                tanggal_perencanaan: tanggal_perencanaan.toISOString().split('T')[0],
+                categoryWisata_id: Number(categoryWisata_id)
             });
 
             if (data) {
@@ -127,17 +122,6 @@ const CreateItineraryAI = () => {
                             </div>
                             <div className='mb-5'>
                                 <label className="label">
-                                    <span className="label-text">Budget</span>
-                                </label>
-                                <input
-                                    onChange={(e) => setBudget(e.target.value)}
-                                    type="number"
-                                    placeholder="Masukkan Budget"
-                                    className="input input-bordered w-full max-w-full"
-                                />
-                            </div>
-                            <div className='mb-5'>
-                                <label className="label">
                                     <span className="label-text">Provinsi</span>
                                 </label>
                                 <select
@@ -165,17 +149,6 @@ const CreateItineraryAI = () => {
                                         <option key={cw.id} value={cw.id}>{cw.nama}</option>
                                     ))}
                                 </select>
-                            </div>
-                            <div className='mb-5'>
-                                <label className="label">
-                                    <span className="label-text">Pilih Tanggal</span>
-                                </label>
-                                <DatePicker
-                                    selected={tanggal_perencanaan}
-                                    onChange={(date) => setTanggalPerencanaan(date)}
-                                    customInput={<CustomDateInput />}
-                                    dateFormat="yyyy-MM-dd"
-                                />
                             </div>
                             <button className="btn btn-block btn-primary mt-4" type='submit'>
                                 {loading

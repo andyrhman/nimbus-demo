@@ -3,9 +3,14 @@ export const SetUserReducer = (state = {}, action) => {
         case "SET_USER":
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+            };
+        case "CLEAR_USER":
+            return {
+                ...state,
+                user: null, // Clear the user state
             };
         default:
             return state;
     }
-}
+};
